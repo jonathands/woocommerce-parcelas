@@ -91,7 +91,7 @@ class Woocommerce_Parcelas_Public extends Woocommerce_Parcelas_Meta_Box {
 
 		if ( $this->allow_installments ) {
 			if ( $this->get_fswp_post_meta_data( $this->disable_installments_key ) !== '1' ) {
-				include 'installments-calc.php';
+				include 'installments-calc-max.php';
 			}
 		}
 
@@ -148,7 +148,7 @@ class Woocommerce_Parcelas_Public extends Woocommerce_Parcelas_Meta_Box {
 	}
 
 	/**
-	 * Insert necessaryJavaScript variables before doing calculation
+	 * Insert necessary JavaScript variables before doing calculation
 	 *
 	 * @return void
 	 */
