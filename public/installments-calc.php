@@ -77,6 +77,7 @@ if ($price <= $min_value)
         if ($installments_price >= $min_value)
         {
             $installments_html = "<div class='fswp_installments_price $class'>";
+			
             $installments_html .= "<p class='price fswp_calc'>" . sprintf(__('<span class="fswp_installment_prefix">%s %sx de</span> ', 'wc-parcelas'), $prefix, $installments) . $formatted_installments_price . " <span class='fswp_installment_suffix'>" . $suffix . "</span></p>";
             $installments_html .= "</div>";
         } else
@@ -86,7 +87,8 @@ if ($price <= $min_value)
     } else
     {		
 		$i = 0;
-		$installments_html = "<ul>"; 
+		$installments_html = "<ul class='fswp_installments'>"; 
+		$installments_html .= "<p> ou no cartão em: </p>";
 		while ( $i < $installments) {
 			$i++;
 			$installments_html .= "<li><div class='fswp_installments_price $class'>";

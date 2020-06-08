@@ -88,16 +88,17 @@ class Woocommerce_Parcelas_Public extends Woocommerce_Parcelas_Meta_Box {
 		if ( ! wc_get_price_including_tax( $product ) ) {
 			return;
 		}
-
-		if ( $this->allow_installments ) {
-			if ( $this->get_fswp_post_meta_data( $this->disable_installments_key ) !== '1' ) {
-				include 'installments-calc-max.php';
-			}
-		}
+		
 
 		if ( $this->allow_in_cash ) {
 			if ( $this->get_fswp_post_meta_data( $this->disable_in_cash_key ) !== '1' ) {
 				include 'in-cash-calc.php';
+			}
+		}
+
+		if ( $this->allow_installments ) {
+			if ( $this->get_fswp_post_meta_data( $this->disable_installments_key ) !== '1' ) {
+				include 'installments-calc-max.php';
 			}
 		}
 
@@ -126,14 +127,6 @@ class Woocommerce_Parcelas_Public extends Woocommerce_Parcelas_Meta_Box {
 		 */
 		$class = 'single';
 
-		/**
-		 * If installment option is enabled in backend
-		 */
-		if ( $this->allow_installments ) {
-			if ( $this->get_fswp_post_meta_data( $this->disable_installments_key ) !== '1' ) {
-				include 'installments-calc.php';
-			}
-		}
 
 		/**
 		 * If in cash option is enabled in backend
@@ -144,6 +137,15 @@ class Woocommerce_Parcelas_Public extends Woocommerce_Parcelas_Meta_Box {
 			}
 		}
 
+		/**
+		 * If installment option is enabled in backend
+		 */
+		if ( $this->allow_installments ) {
+			if ( $this->get_fswp_post_meta_data( $this->disable_installments_key ) !== '1' ) {
+				include 'installments-calc.php';
+			}
+		}
+		
 		do_action( 'after_installments_in_single' );
 	}
 
